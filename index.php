@@ -19,6 +19,8 @@
 
 <body>
 <?php include 'partials/_header.php';?>
+<?php include 'partials/_dbconnect.php';?>
+<!-- slider -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -27,13 +29,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://source.unsplash.com/1600x300/?nature,water" class="d-block w-100" alt="...">
+                    <img src="https://source.unsplash.com/1600x300/?jungle" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://source.unsplash.com/1600x300/?nature,water" class="d-block w-100" alt="...">
+                    <img src="https://source.unsplash.com/1600x300/?waterfall" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://source.unsplash.com/1600x300/?nature,water" class="d-block w-100" alt="...">
+                    <img src="https://source.unsplash.com/1600x300/?beach" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -45,23 +47,38 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
+<!-- container -->
 <div class="container">
-
     <h2 class="text-center">CNTTFORUM - Danh Mục</h2>
-
-
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://source.unsplash.com/600x200/?nature,water" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Thảo Luận</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- danhmuc o duoi day -->
+                    <div class="container my-4" id="ques">
+                        <h2 class="text-center my-4">iDiscuss - Browse Categories</h2>
+                        <div class="row my-4">
+                            <!-- Fetch all the categories and use a loop to iterate through categories -->
+                            <?php
+
+                            $sql = "SELECT * FROM `danhmuc`";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                // echo $row['category_id'];
+                                // echo $row['category_name'];
+                                $id = $row['madanhmuc'];
+                                $cat = $row['tendanhmuc'];
+                                $desc = $row['ghichudanhmuc'];
+                                echo '<div class="col-md-4 my-2">
+                  <div class="card" style="width: 18rem;">
+                      <img src="https://source.unsplash.com/400x300/?'.$id. ',nature" class="card-img-top" alt="image for this category">
+                      <div class="card-body">
+                          <h5 class="card-title"><a href="threadlist.php?catid=' . $id . '">' . $cat . '</a></h5>
+                          <p class="card-text">' . substr($desc, 0, 90). '... </p>
+                          <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary">Thảo Luận</a>
+                      </div>
+                  </div>
+                </div>';
+                            }
+                            ?>
+
                 </div>
             </div>
 <?php include 'partials/_footer.php';?>

@@ -1,5 +1,5 @@
 <?php
-echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">
+echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,8 +33,8 @@ echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">login</button>
-      <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#signupModal">signup</button>
+      <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+      <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#signupModal">Đăng ký</button>
         
 </div>
       
