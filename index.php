@@ -49,23 +49,22 @@
         </div>
 <!-- container -->
 <div class="container">
-    <h2 class="text-center">CNTTFORUM - Danh Mục</h2>
                 <div class="row">
                     <!-- danhmuc o duoi day -->
                     <div class="container my-4" id="ques">
-                        <h2 class="text-center my-4">iDiscuss - Browse Categories</h2>
+                        <h2 class="text-center my-4">CNTTFORUM - Danh mục</h2>
                         <div class="row my-4">
                             <!-- Fetch all the categories and use a loop to iterate through categories -->
                             <?php
 
-                            $sql = "SELECT * FROM `danhmuc`";
+                            $sql = "SELECT * FROM `categories`";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_assoc($result)){
                                 // echo $row['category_id'];
                                 // echo $row['category_name'];
-                                $id = $row['madanhmuc'];
-                                $cat = $row['tendanhmuc'];
-                                $desc = $row['ghichudanhmuc'];
+                                $id = $row['category_id'];
+                                $cat = $row['category_name'];
+                                $desc = $row['category_description'];
                                 echo '<div class="col-md-4 my-2">
                   <div class="card" style="width: 18rem;">
                       <img src="https://source.unsplash.com/400x300/?'.$id. ',nature" class="card-img-top" alt="image for this category">
