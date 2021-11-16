@@ -52,7 +52,7 @@ if($method=='POST'){
     $showAlert = true;
     if($showAlert){
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Success!</strong> Your comment has been added!
+                        <strong>Chúc mừng </strong> Bình luận thành công !
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -64,26 +64,26 @@ if($method=='POST'){
 
 <!-- Category container starts here -->
 <div class="container my-4">
-    <div class="jumbotron">
+    <div class="border p-3 bg-secondary text-light rounded">
         <h1 class="display-4"><?php echo $title;?></h1>
         <p class="lead">  <?php echo $desc;?></p>
         <hr class="my-4">
-        <p>This is a peer to peer forum. No Spam / Advertising / Self-promote in the forums is not allowed. Do not post copyright-infringing material. Do not post “offensive” posts, links or images. Do not cross post questions. Remain respectful of other members at all times.</p>
-        <p>Posted by: <em><?php echo $posted_by; ?></em></p>
+        <p>Vui lòng không Spam , mọi hành vi vi phạm sẽ bị đưa ra đảo :3</p>
+        <p class="text-warning">Đăng tải bởi : <em><?php echo $posted_by; ?></em></p>
     </div>
 </div>
 
 <?php
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
     echo '<div class="container">
-        <h1 class="py-2">Post a Comment</h1> 
+        <h1 class="py-2">Để lại bình luận :</h1> 
         <form action= "'. $_SERVER['REQUEST_URI'] . '" method="post"> 
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Type your comment</label>
+                <label for="exampleFormControlTextarea1">Viết bình luận của bạn dưới đây : </label>
                 <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                 <input type="hidden" name="sno" value="'. $_SESSION["sno"]. '">
             </div>
-            <button type="submit" class="btn btn-success">Post Comment</button>
+            <button type="submit" class="btn btn-success">Bình luận</button>
         </form> 
     </div>';
 }
@@ -91,8 +91,10 @@ else{
     echo '
         
         <div class="container">
-        <h1 class="py-2">Post a Comment</h1> 
-           <p class="lead">You are not logged in. Please login to be able to post comments.</p>
+        <h1 class="py-2">Để lại bình luận : </h1> 
+           <div class="alert alert-danger" role="alert">
+  Bạn chưa <a data-bs-toggle="modal" data-bs-target="#loginModal" class="alert-link">Đăng nhập</a>. vui lòng đăng nhập hoặc đăng ký để tham gia thảo luận !.
+</div>
         </div>
         ';
 }
@@ -101,7 +103,7 @@ else{
 
 
 <div class="container mb-5" id="ques">
-    <h1 class="py-2">Discussions</h1>
+    <h1 class="py-2">Bàn luận </h1>
     <?php
     $id = $_GET['threadid'];
     $sql = "SELECT * FROM `comments` WHERE thread_id=$id";

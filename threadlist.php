@@ -51,8 +51,8 @@ if($method=='POST'){
     $showAlert = true;
     if($showAlert){
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Success!</strong> Your thread has been added! Please wait for community to respond
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <strong>Chúc mừng !</strong> Bài đăng của bạn đã được đăng tải thành công
+                        <type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                   </div>';
@@ -75,20 +75,19 @@ if($method=='POST'){
 <?php
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
     echo '<div class="container">
-            <h1 class="py-2">Start a Discussion</h1> 
+            <h1 class="py-2">Bắt đầu bàn luận</h1> 
             <form action="'. $_SERVER["REQUEST_URI"] . '" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Problem Title</label>
+                    <label for="exampleInputEmail1" class="text-success">Tiêu đề</label>
                     <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
-                        possible</small>
+                    <small id="emailHelp" class="form-text text-muted">Tiêu đề không được quá dài</small>
                 </div>
                 <input type="hidden" name="sno" value="'. $_SESSION["sno"]. '">
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Ellaborate Your Concern</label>
+                <div class="form-group my-2">
+                    <label for="exampleFormControlTextarea1" class="text-success">Nội dung bạn muốn bàn luận </label>
                     <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Đăng</button>
             </form>
         </div>';
 }
@@ -106,7 +105,7 @@ else{
 ?>
 
 <div class="container mb-5" id="ques">
-    <h1 class="py-2">Vấn đề được bàn luận :</h1>
+    <h1 class="py-2">Những vấn đề được bàn luận :</h1>
     <?php
     $id = $_GET['catid'];
     $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
@@ -130,7 +129,7 @@ else{
             <img src="img/user.png" width="54px" class="mr-3" alt="...">
             <div class="media-body">'.
             '<h5 class="mt-0"> <a class="text-danger" href="thread.php?threadid=' . $id. '">'. $title . ' </a></h5>
-                '. $desc . ' </div>'.'<div class="font-weight-bold my-0"> Asked by: '. $row2['user_email'] . ' at '. $thread_time. '</div>'.
+                '. $desc . ' </div>'.'<div class="font-weight-bold my-0"> Đăng bởi: <a class = "text-success">'. $row2['user_email'] . '</a> Vào lúc <a class = "text-success">'. $thread_time. '</a></div>'.
             '</div>';
 
     }
