@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         #ques{
             min-height: 433px;
@@ -52,7 +51,7 @@ if($method=='POST'){
     $showAlert = true;
     if($showAlert){
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Success!</strong> Your comment has been added!
+                        <strong>Thành công ! </strong> Bình luận đã được đăng lên
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -68,8 +67,8 @@ if($method=='POST'){
         <h1 class="display-4"><?php echo $title;?></h1>
         <p class="lead">  <?php echo $desc;?></p>
         <hr class="my-4">
-        <p>This is a peer to peer forum. No Spam / Advertising / Self-promote in the forums is not allowed. Do not post copyright-infringing material. Do not post “offensive” posts, links or images. Do not cross post questions. Remain respectful of other members at all times.</p>
-        <p>Posted by: <em><?php echo $posted_by; ?></em></p>
+        <p class="text-secondary">Không được spam dưới mọi hình thức , mọi hành vi vi phạm sẽ bị đưa ra đảo </p>
+        <p>Đăng bới: <em><strong><?php echo $posted_by; ?></strong></em></p>
     </div>
 </div>
 
@@ -79,7 +78,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
         <h1 class="py-2">Post a Comment</h1> 
         <form action= "'. $_SERVER['REQUEST_URI'] . '" method="post"> 
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Type your comment</label>
+                <label for="exampleFormControlTextarea1">Viết bình luận của bạn</label>
                 <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                 <input type="hidden" name="sno" value="'. $_SESSION["sno"]. '">
             </div>
@@ -91,8 +90,10 @@ else{
     echo '
         
         <div class="container">
-        <h1 class="py-2">Post a Comment</h1> 
-           <p class="lead">You are not logged in. Please login to be able to post comments.</p>
+        <h1 class="py-2">Đăng bình luận</h1> 
+           <div class="alert alert-danger" role="alert">
+  Bạn chưa <a data-bs-toggle="modal" data-bs-target="#loginModal" class="alert-link">Đăng nhập</a>. vui lòng đăng nhập hoặc đăng ký để tham gia thảo luận !.
+</div>
         </div>
         ';
 }
@@ -100,8 +101,8 @@ else{
 ?>
 
 
-<div class="container mb-5" id="ques">
-    <h1 class="py-2">Discussions</h1>
+<div class="container mb-5 bg-secondary bg-opacity-25" id="ques">
+    <h1 class="py-2">Mọi người cũng bình luận : </h1>
     <?php
     $id = $_GET['threadid'];
     $sql = "SELECT * FROM `comments` WHERE thread_id=$id";
@@ -118,11 +119,12 @@ else{
         $result2 = mysqli_query($conn, $sql2);
         $row2 = mysqli_fetch_assoc($result2);
 
-        echo '<div class="media my-3">
-            <img src="img/user.png" width="54px" class="mr-3" alt="...">
-            <div class="media-body">
-               <p class="font-weight-bold my-0">'. $row2['user_email'] .' at '. $comment_time. '</p> '. $content . '
-            </div>
+        echo '<div class="d-flex">
+            <img src="img/user.png" width="54px" class="me-3 rounded-circle" alt="...">
+            <div>
+            <div class="">
+               <p class="font-weight-bold my-0 text-secondary">'. $row2['user_email'] .' Vào lúc '. $comment_time. '</p><strong> '. $content . '</strong>
+            </div></div>
         </div>';
 
     }
@@ -131,8 +133,8 @@ else{
     if($noResult){
         echo '<div class="jumbotron jumbotron-fluid">
                     <div class="container">
-                        <p class="display-4">No Comments Found</p>
-                        <p class="lead"> Be the first person to comment</p>
+                        <p class="display-4">Chưa có bình luận</p>
+                        <p class="lead"> hãy trở thành người đầu tiên trả lời</p>
                     </div>
                  </div> ';
     }

@@ -13,20 +13,22 @@
 
 
                     <div class="form-group">
-                        <label for="loginEmail" class="form-label">Email address</label>
+                        <label for="loginEmail" class="form-label">Email</label>
                         <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div id="emailHelp" class="form-text">Chúng tôi cam kết không chia sẻ Email cho bất kỳ ai .</div>
                     </div>
+                <br>
                     <div class="form-group">
-                        <label for="loginPass" class="form-label">Password</label>
+                        <label for="loginPass" class="form-label">Mật khẩu</label>
                         <input type="password" class="form-control" id="loginPass" name ="loginPass">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                    <button type="submit" class="btn btn-primary ">Đăng nhập</button>
 
             </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
             </div>
         </div>
     </div>

@@ -18,9 +18,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['useremail'] = $email;
             echo "logged in". $email;
         }
-        header("Location: /cnttforum/index.php");
+        header("Location: /cnttforum/thaoluan.php");
     }
-   header("Location: /cnttforum/index.php");
+   header("Location: /cnttforum/thaoluan.php");
 }
 
 ?>

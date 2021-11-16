@@ -75,20 +75,19 @@ if($method=='POST'){
 <?php
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
     echo '<div class="container">
-            <h1 class="py-2">Start a Discussion</h1> 
+            <h1 class="py-2">Bắt đầu thảo luận</h1> 
             <form action="'. $_SERVER["REQUEST_URI"] . '" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Problem Title</label>
+                    <label for="exampleInputEmail1">Tiêu đề</label>
                     <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
-                        possible</small>
+                    <small id="emailHelp" class="form-text text-muted">Không nên viết quá dài</small>
                 </div>
                 <input type="hidden" name="sno" value="'. $_SESSION["sno"]. '">
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Ellaborate Your Concern</label>
+                    <label for="exampleFormControlTextarea1">Nội dung</label>
                     <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Đăng</button>
             </form>
         </div>';
 }
@@ -126,11 +125,12 @@ else{
 
 
 
-        echo '<div class="media my-3">
-            <img src="img/user.png" width="54px" class="mr-3" alt="...">
-            <div class="media-body">'.
-            '<h5 class="mt-0"> <a class="text-danger" href="thread.php?threadid=' . $id. '">'. $title . ' </a></h5>
-                '. $desc . ' </div>'.'<div class="font-weight-bold my-0"> Asked by: '. $row2['user_email'] . ' at '. $thread_time. '</div>'.
+        echo '<div class="d-flex">
+            <img src="img/user.png" class="me-3 rounded-circle" alt="..." style="width: 100px; height: 100px;">
+            <div>
+            <div class="">'.
+            '<div class=""> <a class="text-danger" href="thread.php?threadid=' . $id. '">'.$title.'</a></div>
+             '.$desc.' </div>'.'<div class="font-weight-bold my-0"> Đăng bới: <strong>'. $row2['user_email'] . '</strong> at '. $thread_time. '</div></div>'.
             '</div>';
 
     }
